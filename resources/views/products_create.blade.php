@@ -21,11 +21,11 @@
                     <form method="POST" action="{{ route('products_store') }}"  enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                          <label for="p_code" class="form-label">Product_code</label>
+                          <label for="p_code" class="form-label">Product code</label>
                           <input type="text" class="form-control" name="p_code" id="p_code" aria-describedby="p">
                         </div>
                         <div class="mb-3">
-                          <label for="p_name" class="form-label">Product_Name</label>
+                          <label for="p_name" class="form-label">Product Name</label>
                           <input type="text" class="form-control" name="p_name" id="p_name" aria-describedby="emailHelp">
 
                         </div>

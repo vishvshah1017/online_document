@@ -35,7 +35,8 @@ Route::get('/user_product_data_show', [UserProductDataController::class,'show'])
 Route::get('/products_create', [ProductsController::class, 'create'])->name('products_create');
 Route::get('/users_create', [UsersController::class,'create'])->name('users_create');
 Route::get('/themes_create', [ThemesController::class, 'create'])->name('themes_create');
-
+Route::get('/user_product_data_create', [UserProductDataController::class,'create'])->name('user_product_data_create');
+Route::get('/product_field_create', [ProductfieldController::class, 'create'])->name('product_field_create');
 Route::get('users', ['users'=>'UserController@index', 'as'=>'users.index']);
 
 
@@ -43,4 +44,9 @@ Route::get('users', ['users'=>'UserController@index', 'as'=>'users.index']);
 Route::post('/products_store', [ProductsController::class, 'store'])->name('products_store');
 
 Route::post('/themes_store', [ThemesController::class, 'store'])->name('themes_store');
+
+Route::post('/user_product_data_store', [UserProductDataController::class,'store'])->name('user_product_data_store');
+
+Route::post('/product_field_store', [ProductfieldController::class, 'store'])->name('product_field_store');
+
 

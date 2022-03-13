@@ -13,7 +13,7 @@ class UsersController extends Controller
 
     public function create()
     {
-        //
+        return view('users_create');
     }
 
     public function store(Request $request)
