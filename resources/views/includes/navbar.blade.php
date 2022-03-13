@@ -14,6 +14,27 @@
             <a class="nav-link" href="{{ route('products_show') }}">Product</a>
           </li>
           @endif
+          @if (Route::has('product_field_show'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('product_field_show') }}">ProductField</a>
+          </li>
+          @endif
+          @if (Route::has('themes_show'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('themes_show') }}">Themes</a>
+          </li>
+          @endif
+          @if (Route::has('users_show'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('users_show') }}">Users</a>
+          </li>
+          @endif
+          @if (Route::has('user_product_data_show'))
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('user_product_data_show') }}">User product data</a>
+          </li>
+          @endif
+
 
         </ul>
         <form class="d-flex">

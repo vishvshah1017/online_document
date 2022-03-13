@@ -14,13 +14,22 @@ class ProductsController extends Controller
 
     public function create()
     {
-        //
+        return view('products_create');
     }
 
 
     public function store(Request $request)
     {
         //
+      //  dd($request);
+        $products = new Products();
+        $products->p_code = $request->p_code;
+        $products->p_name = $request->p_name;
+        $products->p_desc = $request->p_desc;
+        $products->is_active = $request->is_active === 'on' ? 1 : 0;
+        $products->save();
+
+
     }
 
     public function show(Request $request)

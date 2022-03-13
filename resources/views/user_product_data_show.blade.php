@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Products Table') }}</div>
+                <div class="card-header">{{ __('user product data Table') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -15,37 +15,38 @@
                         </div>
                     @endif
                     {{-- <span>
-                        {{print_r($products)}}
+                        {{print_r($UserProductData)}}
                     </span> --}}
                     <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Product Code</th>
-                            <th scope="col">Product Name</th>
-                            <th scope="col">Product Desc</th>
-                            <th scope="col">Is Active</th>
+                            <th scope="col">Product Id</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col">Field Data</th>
+                            <th scope="col">Last Update</th>
+
 
                           </tr>
                         </thead>
                         <tbody>
 
-                            @foreach ($products as $product)
+                            @foreach ($user_product_data as $user_product_data)
                             <tr>
-                                <td> {{$product->id}}</td>
-                                <td> {{$product->p_code}}</td>
-                                <td> {{$product->p_name}}</td>
-                                <td> {{$product->p_desc}}</td>
-                                <td> {{$product->is_active}}</td>
+                                <td> {{$user_product_data->id}}</td>
+                                <td> {{$user_product_data->product_id}}</td>
+                                <td> {{$user_product_data->user_id}}</td>
+                                <td> {{$user_product_data->field_data}}</td>
+                                <td> {{$user_product_data->last_update}}</td>
                                 <td>  <button type="button" class="btn btn-primary">
                                     {{ __('Edit') }}
-                                </button>  <button type="button" class="btn btn-danger">
+                                </button>
+                                 <button type="button" class="btn btn-danger">
                                     {{ __('Delete') }}
                                 </button>
-                            </button>  <button type="button" class="btn btn-infos">
-                                {{ __('Insert') }}
-                            </button>
-                             </td>
+                              <button type="button" class="btn btn-info">
+                                {{ __('insert') }}</button>
+                                </td>
 
 
 
