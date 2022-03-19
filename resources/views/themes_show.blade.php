@@ -40,13 +40,18 @@
                                 <td> {{$themes->t_desc}}</td>
                                 <td> {{$themes->is_active}}</td>
                                 <td> {{$themes->link}}</td>
-                                <td>  <button type="button" class="btn btn-primary">
+                               {{-- <td>  <button type="button" class="btn btn-primary">
                                     {{ __('Edit') }}
                                 </button>  <button type="button" class="btn btn-danger">
                                     {{ __('Delete') }}
                                 </button>
                              <button type="button" class="btn btn-info">
                                 {{ __('insert') }}</button>
+                            </td>--}}
+
+                            <td>
+                                <a href="{{route('themes_edit',$themes->id)}}" class="btn btn-success">Edit</a>
+                                <a href="{{route('themes_edit',$themes->id)}}" class="btn btn-danger">Delete</a>
                             </td>
 
 

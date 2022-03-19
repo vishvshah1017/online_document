@@ -24,19 +24,29 @@ Route::get('/', function () {
 });
 
 Auth ::routes();
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/products_show', [ProductsController::class, 'show'])->name('products_show');
 Route::get('/product_field_show', [ProductfieldController::class, 'show'])->name('product_field_show');
 Route::get('/themes_show', [ThemesController::class, 'show'])->name('themes_show');
 Route::get('/users_show', [UsersController::class,'show'])->name('users_show');
+Route::get('/users_edit/{id}', [UsersController::class, 'edit'])->name('users_edit');
 Route::get('/user_product_data_show', [UserProductDataController::class,'show'])->name('user_product_data_show');
 Route::get('/products_create', [ProductsController::class, 'create'])->name('products_create');
+Route::get('/products_edit/{id}', [ProductsController::class, 'edit'])->name('products_edit');
+Route::post('/products_edit_update/{id}', [ProductsController::class, 'update'])->name('products_update');
 Route::get('/users_create', [UsersController::class,'create'])->name('users_create');
 Route::get('/themes_create', [ThemesController::class, 'create'])->name('themes_create');
+Route::get('/themes_edit/{id}', [ThemesController::class, 'edit'])->name('themes_edit');
+Route::post('/themes_update/{id}', [ThemesController::class, 'update'])->name('themes_update');
 Route::get('/user_product_data_create', [UserProductDataController::class,'create'])->name('user_product_data_create');
+Route::get('/user_product_data_edit/{id}', [UserProductDataController::class, 'edit'])->name('user_product_data_edit');
 Route::get('/product_field_create', [ProductfieldController::class, 'create'])->name('product_field_create');
+Route::get('/product_field_edit/{id}', [ProductFieldController::class, 'edit'])->name('product_field_edit');
+Route::post('/user_product_data_update/{id}', [UserProductDataController::class, 'update'])->name('user_product_data_update');
+
+Route::post('/product_field_update/{id}', [ProductFieldController::class, 'update'])->name('product_field_update');
 Route::get('users', ['users'=>'UserController@index', 'as'=>'users.index']);
 
 

@@ -14,32 +14,37 @@
     @endif
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Products Create') }}</div>
+                <div class="card-header">{{ __('Themes Update') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+                    {{-- @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
-                    @endif
+                    @endif --}}
                     {{-- <span>
-                        {{print_r($products)}}
+                        {{print_r($themes)}}
                     </span> --}}
 
-                    <form method="POST" action="{{ route('products_store') }}"  enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('themes_update',$themes->id) }}"  enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
-                          <label for="p_code" class="form-label">Product code</label>
-                          <input type="number" class="form-control" name="p_code" id="p_code" aria-describedby="p">
+                          <label for="themes_code" class="form-label">Themes code</label>
+                          <input type="number" class="form-control" value="{{ $themes->t_code}}" name="themes_code" id="themes_code" aria-describedby="t">
                         </div>
                         <div class="mb-3">
-                          <label for="p_name" class="form-label">Product Name</label>
-                          <input type="text" class="form-control" name="p_name" id="p_name" aria-describedby="p">
+                          <label for="themes_name" class="form-label">Themes Name</label>
+                          <input type="text" class="form-control"  value="{{ $themes->t_name}}" name="themes_name" id="themes_name" aria-describedby="t">
 
                         </div>
                         <div class="mb-3">
-                            <label for="p_desc" class="form-label">Product_Desc</label>
-                            <input type="text" class="form-control" name="p_desc" id="p_desc" aria-describedby="p">
+                            <label for="themes_desc" class="form-label">Themes Desc</label>
+                            <input type="text" class="form-control" value="{{ $themes->t_desc }}" name="themes_desc" id="themes_desc" aria-describedby="t">
+
+                          </div>
+                          <div class="mb-3">
+                            <label for="themes_link" class="form-label">Themes Link</label>
+                            <input type="text" class="form-control" value="{{ $themes->link}}" name="themes_link" id="themes_link" aria-describedby="t">
 
                           </div>
                         <div class="mb-3 form-check">

@@ -42,13 +42,18 @@
                                 <td> {{$product_field->field_classes}}</td>
                                 <td> {{$product_field->product_id}}</td>
                                 <td> {{$product_field->is_active}}</td>
-                                <td>  <button type="button" class="btn btn-primary">
+
+                               {{-- <td>  <button type="button" class="btn btn-primary">
                                     {{ __('Edit') }}
                                 </button>  <button type="button" class="btn btn-danger">
                                     {{ __('Delete') }}
                                 </button>
                             <button type="button" class="btn btn-info">
                                 {{ __('Insert') }}</button>
+                            </td>---}}
+                            <td>
+                                <a href="{{route('product_field_edit',$product_field->id)}}" class="btn btn-success">Edit</a>
+                                <a href="{{route('product_field_edit',$product_field->id)}}" class="btn btn-danger">Delete</a>
                             </td>
 
 

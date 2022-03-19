@@ -40,14 +40,38 @@ class ThemesController extends Controller
          return view('themes_show',compact('themes'));
     }
 
-    public function edit(Request $request)
+    public function edit($id , Request $request)
     {
-        //
+
+          $themes =  Themes::find($id);
+          return view('themes_edit',compact('themes'));
+
     }
 
-    public function update(Request $request)
+    public function update($id,Request $request)
     {
-        //
+        $themes = Themes::find($id);
+        //dd($id);
+        if (!$themes) {
+            abort(404);
+        } else {
+            $this->validate($request, [
+                'themes_code' => 'required',
+                'themes_name' => 'required',
+                'themes_desc' => 'required',
+                'themes_link' => 'required',
+            ]);
+
+           // dd($request);
+
+            $themes->t_code = $request->themes_code;
+            $themes->t_name = $request->themes_name;
+            $themes->t_desc = $request->themes_desc;
+            $themes->link = $request->themes_link;
+            $themes->save();
+
+            return back()->with('success', 'Themes updated successful');
+        }
     }
 
     public function destroy(Request $request)

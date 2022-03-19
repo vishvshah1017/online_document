@@ -27,9 +27,10 @@ class UsersController extends Controller
         $users = Users::all();
         return view('users_show',compact('users'));
     }
-    public function edit(Request $request)
+    public function edit($id)
     {
-        //
+        $users = Users::where("id",$id)->get();
+        //echo "<pre>".print_r($users,true)."</pre>";
     }
 
     public function update(Request $request)

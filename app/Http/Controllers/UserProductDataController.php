@@ -32,14 +32,34 @@ class UserProductDataController extends Controller
         $user_product_data = user_product_data::all();
        return view('user_product_data_show',compact('user_product_data'));
     }
-    public function edit(Request $request)
+    public function edit($id,Request $request)
     {
-        //
+
+        $user_product_data =  user_product_data::find($id);
+
+          return view('user_product_data_edit',compact('user_product_data'));
     }
 
-    public function update(Request $request)
+    public function update($id,Request $request)
     {
-        //
+        $user_product_data = user_product_data::find($id);
+        if (!$user_product_data) {
+            abort(404);
+        } else {
+            $this->validate($request, [
+                'product_id' => 'required',
+                'user_id' => 'required',
+                'field_data' => 'required',
+            ]);
+
+
+            $user_product_data->product_id = $request->product_id;
+            $user_product_data->user_id = $request->user_id;
+            $user_product_data->field_data = $request->field_data;
+            $user_product_data->save();
+
+            return back()->with('success', 'user product data updated successful');
+        }
     }
 
     public function destroy(Request $request)

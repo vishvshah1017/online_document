@@ -37,15 +37,20 @@
                                 <td> {{$product->p_name}}</td>
                                 <td> {{$product->p_desc}}</td>
                                 <td> {{$product->is_active}}</td>
-                                <td>  <button type="button" class="btn btn-primary">
+                               {{-- <td>  <button type="button" class="btn btn-primary">
                                     {{ __('Edit') }}
                                 </button>  <button type="button" class="btn btn-danger">
                                     {{ __('Delete') }}
                                 </button>
-                            </button>  <button type="button" class="btn btn-infos">
+                            </button>  <button type="button" class="btn btn-info">
                                 {{ __('Insert') }}
                             </button>
-                             </td>
+                             </td>---}}
+
+                             <td>
+                                <a href="{{route('products_edit',$product->id)}}" class="btn btn-success">Edit</a>
+                                <a href="{{route('products_edit',$product->id)}}" class="btn btn-danger">Delete</a>
+                            </td>
 
 
 
