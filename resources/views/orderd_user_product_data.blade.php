@@ -78,9 +78,20 @@
 
                                         </td>
                                     </tr>
+
                                     @endif
                                   @endforeach
+                                  <tr>
+                                    <td>
+                                        Action :
+                                    </td>
+                                    <td>
 
+                                        <a class="btn btn-primary" href="{{ route('viewdata',$value['upd_id']) }}" role="button">View</a>
+
+
+                                    </td>
+                                </tr>
                             @endforeach
 
                         </tbody>

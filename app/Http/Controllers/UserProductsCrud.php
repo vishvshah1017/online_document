@@ -19,14 +19,25 @@ class UserProductsCrud extends Controller
         return view('user_products_crud', compact('product_fields'));
 
     }
+    public function index($upd_id)
+    {
+
+        //get field_data from user_product_data table
+        $field_data = user_product_data::where('id', $upd_id)->get('field_data')->first()->toArray();
+
+
+        return view('themes.bcard', compact('field_data'));
+
+    }
 
     public function UserOrderdProduct()
     {
 
         $user_id = auth()->user()->id;
         $user_products = user_product_data::join('products', 'user_product_datas.product_id', '=', 'products.id')
-            ->where('user_id', $user_id)
-            ->get();
+            ->where('user_id', $user_id)->select('user_product_datas.*','user_product_datas.id As upd_id', 'products.*')->get();
+
+
 
         //convert user_products to array
         $user_products_array = $user_products->toArray();

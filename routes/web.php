@@ -35,6 +35,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/fill_info/{id}', [UserProductsCrud::class, 'openViewForProduct'])->name('fill_info');
 Route::post('/userproductstore/{id}', [UserProductsCrud::class, 'userproductstore'])->name('save_user_product_data');
 Route::get('/userorderdproduct', [UserProductsCrud::class, 'UserOrderdProduct'])->name('orderd_user_product_data');
+Route::get('/{id}', [UserProductsCrud::class, 'index'])->name('viewdata');
 
 
 Route::get('/products_show', [ProductsController::class, 'show'])->name('products_show');
