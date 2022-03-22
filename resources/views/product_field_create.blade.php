@@ -39,7 +39,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="field_id" class="form-label">Field Id</label>
-                            <input type="number" class="form-control" name="field_id" id="field_id" aria-describedby="f">
+                            <input type="text" class="form-control" name="field_id" id="field_id" aria-describedby="f">
 
                           </div>
                           <div class="mb-3">
@@ -49,8 +49,12 @@
                           </div>
                           <div class="mb-3">
                             <label for="product_id" class="form-label">Product Id</label>
-                            <input type="number" class="form-control" name="product_id" id="product_id" aria-describedby="f">
 
+                             <select class="form-control" name="product_id" id="product_id">
+                                 @foreach ($products as $product)
+                                    <option value="{{$product->id}}">{{$product->p_name}}</option>
+                                @endforeach
+                             </select>
                           </div>
                         <div class="mb-3 form-check">
                           <input type="checkbox" name="is_active" class="form-check-input" id="is_active">

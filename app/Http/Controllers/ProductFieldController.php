@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product_field;
+use App\Models\products;
+
 class ProductFieldController extends Controller
 {
     public function index()
@@ -14,7 +16,10 @@ class ProductFieldController extends Controller
 
     public function create()
     {
-        return view('product_field_create');
+        // fetch products
+        $products = products::all();
+        return view('product_field_create', compact('products'));
+
 
     }
 
@@ -27,7 +32,7 @@ class ProductFieldController extends Controller
         $product_field->field_name = $request->field_name;
         $product_field->field_type = $request->field_type;
         $product_field->field_id = $request->field_id;
-        $product_field->field_classes = $request->field_classes;
+        $product_field->field_classes =($request->field_classes)?$request->field_classes:'no-class';
         $product_field->product_id = $request->product_id;
         $product_field->is_active = $request->is_active === 'on' ? 1 : 0;
         $product_field->save();
@@ -69,7 +74,6 @@ class ProductFieldController extends Controller
                 'field_name' => 'required',
                 'field_type' => 'required',
                 'field_id' => 'required',
-                'field_classes' => 'required',
                 'product_id' => 'required',
 
             ]);
@@ -78,7 +82,7 @@ class ProductFieldController extends Controller
             $Product_field->field_name = $request->field_name;
             $Product_field->field_type = $request->field_type;
             $Product_field->field_id = $request->field_id;
-            $Product_field->field_classes = $request->field_classes;
+            $Product_field->field_classes = ($request->field_classes)?$request->field_classes:'no-class';
             $Product_field->product_id = $request->product_id;
             $Product_field->save();
 

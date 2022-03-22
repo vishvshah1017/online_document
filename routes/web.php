@@ -6,6 +6,9 @@ use App\Http\Controllers\ProductFieldController;
 use App\Http\Controllers\ThemesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\UserProductDataController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserProductsCrud;
+
 
 
 /*
@@ -25,7 +28,14 @@ Route::get('/', function () {
 
 Auth ::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/fill_info/{id}', [UserProductsCrud::class, 'openViewForProduct'])->name('fill_info');
+Route::post('/userproductstore/{id}', [UserProductsCrud::class, 'userproductstore'])->name('save_user_product_data');
+Route::get('/userorderdproduct', [UserProductsCrud::class, 'UserOrderdProduct'])->name('orderd_user_product_data');
+
 
 Route::get('/products_show', [ProductsController::class, 'show'])->name('products_show');
 Route::get('/product_field_show', [ProductfieldController::class, 'show'])->name('product_field_show');
@@ -36,6 +46,8 @@ Route::get('/user_product_data_show', [UserProductDataController::class,'show'])
 Route::get('/products_create', [ProductsController::class, 'create'])->name('products_create');
 Route::get('/products_edit/{id}', [ProductsController::class, 'edit'])->name('products_edit');
 Route::post('/products_edit_update/{id}', [ProductsController::class, 'update'])->name('products_update');
+Route::post('/products_edit_update/{id}', [ProductsController::class, 'update'])->name('products_update');
+
 Route::get('/users_create', [UsersController::class,'create'])->name('users_create');
 Route::get('/themes_create', [ThemesController::class, 'create'])->name('themes_create');
 Route::get('/themes_edit/{id}', [ThemesController::class, 'edit'])->name('themes_edit');
