@@ -30,7 +30,7 @@
                         @csrf
                         <div class="mb-3">
                           <label for="themes_code" class="form-label">Themes code</label>
-                          <input type="number" class="form-control" name="themes_code" id="themes_code" aria-describedby="t">
+                          <input type="text" class="form-control" name="themes_code" id="themes_code" aria-describedby="t">
                         </div>
                         <div class="mb-3">
                           <label for="themes_name" class="form-label">Themes Name</label>

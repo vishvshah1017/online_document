@@ -88,6 +88,7 @@
                                     <td>
 
                                         <a class="btn btn-primary" href="{{ route('viewdata',$value['upd_id']) }}" role="button">View</a>
+                                        <a class="btn btn-primary" href="{{ route('edit_user_product_data',$value['upd_id']) }}" role="button">Edit</a>
 
 
                                     </td>

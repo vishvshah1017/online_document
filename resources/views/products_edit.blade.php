@@ -29,7 +29,7 @@
                         @csrf
                         <div class="mb-3">
                           <label for="p_code" class="form-label">Product code</label>
-                          <input type="number" class="form-control"  value="{{ $products->p_code}}" name="p_code" id="p_code" aria-describedby="p">
+                          <input type="text" class="form-control"  value="{{ $products->p_code}}" name="p_code" id="p_code" aria-describedby="p">
                         </div>
                         <div class="mb-3">
                           <label for="p_name" class="form-label">Product Name</label>
@@ -40,6 +40,17 @@
                             <label for="p_desc" class="form-label">Product_Desc</label>
                             <input type="text" class="form-control" value="{{ $products->p_desc}}" name="p_desc" id="p_desc" aria-describedby="p">
 
+                          </div>
+                          <div class="mb-3">
+                            <label for="theme_id" class="form-label">Theme</label>
+
+                             <select class="form-control" name="theme_id" id="theme_id">
+                                 @foreach ($themes as $theme)
+                                    <option value="{{$theme->id}}"  @if ($products->theme_id == $theme->id)
+                                        selected
+                                    @endif >{{$theme->t_name}} </option>
+                                @endforeach
+                             </select>
                           </div>
                         <div class="mb-3 form-check">
                           <input type="checkbox" name="is_active" class="form-check-input" id="is_active">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Products;
+use App\Models\Themes;
 class ProductsController extends Controller
 {
     public function index()
@@ -14,7 +15,9 @@ class ProductsController extends Controller
 
     public function create()
     {
-        return view('products_create');
+        $themes =  Themes::all();
+
+        return view('products_create' , compact('themes'));
     }
 
 
@@ -40,8 +43,9 @@ class ProductsController extends Controller
 
 
         $products = Products::all();
+        $themes =  Themes::all();
 
-        return view('products_show',compact('products'));
+        return view('products_show',compact('products' , 'themes'));
     }
 
     public function edit($id , Request $request)
@@ -52,7 +56,13 @@ class ProductsController extends Controller
           //$product_field =  Product_field::where("id",$id)->get();
           $products =  Products::find($id);
 
-          return view('products_edit',compact('products'));
+          $themes =  Themes::all();
+
+
+
+
+
+          return view('products_edit',compact('products' , 'themes'));
   //$product_field_edit = product_field::select('select * from Product_field where request = ?', [$request]);
 
 
@@ -68,12 +78,14 @@ class ProductsController extends Controller
                 'p_code' => 'required',
                 'p_name' => 'required',
                 'p_desc' => 'required',
+                'theme_id' => 'required',
             ]);
 
 
             $Products->p_code = $request->p_code;
             $Products->p_name = $request->p_name;
             $Products->p_desc = $request->p_desc;
+            $Products->theme_id = $request->theme_id;
             $Products->save();
 
             return back()->with('success', 'Product updated successful');
