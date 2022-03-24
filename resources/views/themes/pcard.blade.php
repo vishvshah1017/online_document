@@ -12,21 +12,14 @@
     $orange: #f57c00;
     $red: #ef5350;
     $cyan: #4dd0e1;
-    $background-light: #ffa726;
-    $background-dark: #ff9800;
-
-    .anchortag
-        {
-            color: #fff;
-            text-decoration: none;
-
-        }
+    $background-light:#ffa726;
+    $background-dark:#ff9800;
 
     body {
     background-image: linear-gradient(
         to bottom right,
         $background-dark,
-        $background-light
+        $background-light,
     );
     }
 
@@ -34,9 +27,16 @@
     color: $color;
     }
 
-    .blue {
-    @include text-color($blue);
+    .anchortag
+    {
+        color: #fff;
+        text-decoration: none;
+
     }
+
+    .blue {
+             @include text-color($blue);
+         }
 
     .green {
     @include text-color($green);
