@@ -32,7 +32,7 @@
                         <x-alert message="{{ session('error') }}" type="danger" title="Error!" />
 
                     @endif
-                    <x-form :action="route('save_user_product_data',$product_fields[0]->id)" enctype="multipart/form-data">
+                    <x-form :action="route('save_user_product_data',$product_fields[0]->product_id)" enctype="multipart/form-data">
 
 
 
@@ -54,10 +54,11 @@
                             @endif
 
 
-
+                                <br>
 
 
                             @endforeach
+
 
                             <x-form-submit />
 

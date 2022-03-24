@@ -61,6 +61,13 @@
         z-index: -1;
     }
 
+    .anchortag
+    {
+        color: #fff;
+        text-decoration: none;
+
+    }
+
     .credit:hover .test {
         left: 0;
     }
@@ -315,7 +322,14 @@
                                   l48.64-48.64C517.581,425.6,517.581,394.88,499.66,376.96z" />
                 </svg>
                 <div>
-                    <p>{{ arrayhaskeythenreturnitsvalue($field_data,'bc-phone') }}</p>
+
+
+                    <a class="anchortag" href="tel:{{arrayhaskeythenreturnitsvalue($field_data,'bc-phone')}}">
+                        <p>{{arrayhaskeythenreturnitsvalue($field_data,'bc-phone')}}</p>
+
+
+
+
 
                 </div>
             </div>
@@ -327,7 +341,17 @@
                     </g>
                 </svg>
                 <div>
-                    <p>{{ arrayhaskeythenreturnitsvalue($field_data,'bc-email') }}</p>
+                    <p>
+                    <a class="anchortag" href="mailto:{{ arrayhaskeythenreturnitsvalue($field_data,'bc-email') }}">{{ arrayhaskeythenreturnitsvalue($field_data,'bc-email') }}</a></p>
+
+
+                    <p>
+                        <a class="anchortag"  href="{{ arrayhaskeythenreturnitsvalue($field_data,'bc-website') }}">
+                        {{ arrayhaskeythenreturnitsvalue($field_data,'bc-website') }}
+                        </a>
+                    </p>
+
+
 
                 </div>
             </div>

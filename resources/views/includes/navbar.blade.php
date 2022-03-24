@@ -87,9 +87,15 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                <li><a class="dropdown-item product" href="{{ route('products_show') }}">Resume</a></li>
+
+                @foreach (getAllProducts() as $product)
+                <li><a class="dropdown-item product" href="{{ route('fill_info', $product->id) }}">{{ $product->p_name }}</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item product" href="{{ route('fill_info',1) }}">Buisness card</a></li>
+                @endforeach
+
+
+
+
 
               </ul>
             </li>

@@ -29,7 +29,13 @@ class UserProductDataController extends Controller
 
     public function show(Request $request)
     {
-        $user_product_data = user_product_data::all();
+       // $user_product_data = user_product_data::all();
+
+        //userproductdata with product_name base on product_id
+        $user_product_data = user_product_data::join('products', 'user_product_datas.product_id', '=', 'products.id')
+
+            ->select('user_product_datas.*', 'user_product_datas.id As upd_id', 'products.*')->get();
+
        return view('user_product_data_show',compact('user_product_data'));
     }
     public function edit($id,Request $request)

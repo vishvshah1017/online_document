@@ -40,7 +40,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="field_id" class="form-label">Field Id</label>
-                            <input type="number" class="form-control" value="{{ $product_field->field_id}}"name="field_id" id="field_id" aria-describedby="f">
+                            <input type="text" class="form-control" value="{{ $product_field->field_id}}"name="field_id" id="field_id" aria-describedby="f">
 
                           </div>
                           <div class="mb-3">

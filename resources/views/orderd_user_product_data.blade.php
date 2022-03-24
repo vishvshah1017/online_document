@@ -58,11 +58,17 @@
                                                         <td> {{ ucfirst(str_replace('-', ' ', $key3))   }}: -</td>
                                                         <td>
 
-                                                            @if(is_file($value3))
+
+                                                            @if(is_file($value3) && isFileImage($value3))
                                                                 <img src="{{asset($value3)}}" alt="{{$value3}}" width="100%" height="100px">
+                                                            @elseif (is_file($value3))
+                                                            <a download="MyPdf" href="{{ asset($value3) }}">Download CV</a>
                                                             @else
                                                                 {{$value3}}
                                                             @endif
+
+
+
 
 
                                                         </td>

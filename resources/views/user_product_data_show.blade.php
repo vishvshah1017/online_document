@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('user product data Table') }}</div>
 
@@ -34,13 +34,47 @@
                             @foreach ($user_product_data as $user_product_data)
                             <tr>
                                 <td> {{$user_product_data->id}}</td>
-                                <td> {{$user_product_data->product_id}}</td>
+                                <td> {{$user_product_data->p_name}}</td>
                                 <td> {{$user_product_data->user_id}}</td>
-                                <td> {{$user_product_data->field_data}}</td>
+                                <td>
+                                     {{-- {{$user_product_data->field_data}} --}}
+
+
+
+                                    @foreach (jsonToArray($user_product_data->field_data) as $key3 => $value3)
+
+                                    <table>
+                                        <tr>
+                                            <td> {{ ucfirst(str_replace('-', ' ', $key3))   }}: -</td>
+                                            <td>
+
+
+                                                @if(is_file($value3) && isFileImage($value3))
+                                                    <img src="{{asset($value3)}}" alt="{{$value3}}" width="100%" height="100px">
+                                                @elseif (is_file($value3))
+                                                <a download="MyPdf" href="{{ asset($value3) }}">Download CV</a>
+                                                @else
+                                                    {{$value3}}
+                                                @endif
+
+
+
+
+
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    @endforeach
+
+                                </td>
                                 <td> {{$user_product_data->last_update}}</td>
                                 <td>
+                                <div class="btn-group" role="group" aria-label="Button group">
                                     <a href="{{route('user_product_data_edit',$user_product_data->id)}}" class="btn btn-success">Edit</a>
+                                    <a href="{{ route('edit_user_product_data',$user_product_data->id) }}" class="btn btn-info">Edit Card info</a>
                                     <a href="{{route('user_product_data_edit',$user_product_data->id)}}" class="btn btn-danger">Delete</a>
+                                </div>
+
                                 </td>
 
 

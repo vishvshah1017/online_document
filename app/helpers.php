@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\products;
 function changeDateFormate($date,$date_format){
     return \Carbon\Carbon::createFromFormat('Y-m-d', $date)->format($date_format);
 }
@@ -21,3 +21,28 @@ function arrayhaskeythenreturnitsvalue($array , $value)
     }
 }
 
+//return all product rows  from products table
+function getAllProducts()
+{
+    return products::all();
+}
+
+ function isFileImage($asset){
+
+     $isFileImage = true;
+     $allowedMimeTypes = ['image/jpeg','image/gif','image/png','image/bmp','image/svg+xml'];
+     $contentType = mime_content_type(public_path($asset));
+
+         if(!in_array($contentType, $allowedMimeTypes) ){
+             $isFileImage = false;
+         }
+
+
+         return $isFileImage;
+
+}
+//convert jsonstring to strd array
+function jsonToArray($jsonString)
+{
+    return json_decode($jsonString, true);
+}

@@ -169,5 +169,6 @@ class UserProductsCrud extends Controller
 
         return back()->with('success', 'Product Data inserted successful');
 
+
     }
 }
